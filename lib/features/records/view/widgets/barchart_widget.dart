@@ -39,7 +39,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(8, 15, 8, 0),
+            padding: const EdgeInsets.fromLTRB(8, 20, 8, 0),
             child: BarChart(
               mainBarData(),
             ),
@@ -68,7 +68,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
               : const BorderSide(color: Colors.white, width: 0),
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
-            toY: 20,
+            toY: 12,
             color: widget.barBackgroundColor,
           ),
         ),
@@ -80,29 +80,29 @@ class _BarChartWidgetState extends State<BarChartWidget> {
       List.generate(12, (i) {
         switch (i) {
           case 0:
-            return makeGroupData(0, 1, isTouched: i == touchedIndex);
+            return makeGroupData(0, 0.5, isTouched: i == touchedIndex);
           case 1:
-            return makeGroupData(1, 7, isTouched: i == touchedIndex);
+            return makeGroupData(1, 6, isTouched: i == touchedIndex);
           case 2:
             return makeGroupData(2, 8, isTouched: i == touchedIndex);
           case 3:
-            return makeGroupData(3, 3, isTouched: i == touchedIndex);
+            return makeGroupData(3, 2, isTouched: i == touchedIndex);
           case 4:
-            return makeGroupData(4, 7, isTouched: i == touchedIndex);
+            return makeGroupData(4, 8, isTouched: i == touchedIndex);
           case 5:
-            return makeGroupData(5, 12, isTouched: i == touchedIndex);
+            return makeGroupData(5, 11, isTouched: i == touchedIndex);
           case 6:
-            return makeGroupData(6, 5, isTouched: i == touchedIndex);
+            return makeGroupData(6, 4, isTouched: i == touchedIndex);
           case 7:
             return makeGroupData(7, 2, isTouched: i == touchedIndex);
           case 8:
-            return makeGroupData(8, 7, isTouched: i == touchedIndex);
+            return makeGroupData(8, 6, isTouched: i == touchedIndex);
           case 9:
-            return makeGroupData(9, 7, isTouched: i == touchedIndex);
+            return makeGroupData(9, 3, isTouched: i == touchedIndex);
           case 10:
-            return makeGroupData(10, 4, isTouched: i == touchedIndex);
+            return makeGroupData(10, 6, isTouched: i == touchedIndex);
           case 11:
-            return makeGroupData(11, 9, isTouched: i == touchedIndex);
+            return makeGroupData(11, 10, isTouched: i == touchedIndex);
           default:
             return throw Error();
         }

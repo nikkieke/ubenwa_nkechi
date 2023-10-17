@@ -1,2 +1,3 @@
-export 'barchart_widget.dart';
 export 'records.dart';
+export 'widgets/widgets.dart';
+
