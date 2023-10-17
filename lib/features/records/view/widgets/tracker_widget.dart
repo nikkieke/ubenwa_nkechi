@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:ubenwa_nkechi/app/utils/helpers/app_bottomsheet/app_bottomsheet.dart';
 import 'package:ubenwa_nkechi/app/utils/utils.dart';
+import 'package:ubenwa_nkechi/features/records/view/widgets/widgets.dart';
 
 class TrackerWidget extends StatelessWidget {
   const TrackerWidget({
@@ -170,7 +172,13 @@ class TrackerWidget extends StatelessWidget {
                       ),
                     ),
                     RawMaterialButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        AppBottomSheet
+                            .showBottomSheet(
+                            context,
+                            widget: const EditAlarm(),
+                        );
+                      },
                       child: Container(
                         alignment: Alignment.center,
                         width: 99.13,
