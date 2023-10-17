@@ -17,10 +17,10 @@ class AppTheme{
     return TextTheme(
       bodyMedium: GoogleFonts.inter(
         color: const Color(0xFF000000),
-        height: 19,
       ),
       titleLarge: GoogleFonts.inter(
         color: const Color(0xFF000000),
+        fontWeight: FontWeight.w600,
       ),
     );
   }
@@ -56,5 +56,3 @@ final myColorScheme = ColorScheme(
   onSurface: Colors.white60,
 
 );
-
-

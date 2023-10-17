@@ -18,7 +18,6 @@ class _OnboardViewState extends State<OnboardView> {
         child: Column(
           children: [
             AnimatedSmoothIndicator(
-
               activeIndex: activeIndex,
               count: 4,
               effect:  WormEffect(
