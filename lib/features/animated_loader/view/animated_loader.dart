@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ubenwa_nkechi/app/app.dart';
 
 class AnimatedLoaderView extends StatefulWidget {
@@ -10,9 +12,14 @@ class AnimatedLoaderView extends StatefulWidget {
 
 class _AnimatedLoaderViewState extends State<AnimatedLoaderView> {
   @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 3), () {
+      context.goNamed(AppRoute.records.name);
+    });
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
       body: LayoutBuilder(builder: (BuildContext context,
@@ -25,7 +32,7 @@ class _AnimatedLoaderViewState extends State<AnimatedLoaderView> {
             Align(
               alignment: AlignmentDirectional.topCenter,
               child: SizedBox(
-                height: 205,
+                height: 205.h,
                 child: Image.asset(AppImage.babyBottle),),
             ),
             Positioned(
@@ -37,7 +44,7 @@ class _AnimatedLoaderViewState extends State<AnimatedLoaderView> {
                 style: Theme.of(context).textTheme
                     .bodyMedium?.copyWith(
                   color: Colors.white,
-                  fontSize: 18,
+                  fontSize: 18.sp,
 
                 ),
               ),
@@ -45,7 +52,7 @@ class _AnimatedLoaderViewState extends State<AnimatedLoaderView> {
             Positioned(
               left: 0,
               right: 0,
-              top: height - 110,
+              top: 820.h,
               child: SizedBox(
                 height: 110,
                 width: double.maxFinite,
@@ -56,7 +63,7 @@ class _AnimatedLoaderViewState extends State<AnimatedLoaderView> {
         );
       },
 
-      )
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ubenwa_nkechi/app/utils/utils.dart';
 
@@ -12,11 +13,11 @@ class OverviewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Container(
       width: double.maxFinite,
-      height: 120,
-      padding: const EdgeInsets.only(left: 25, right: 28,),
-      child: const Row(
+      height: 120.h,
+      padding:  EdgeInsets.only(left: 25.r, right: 28.r,),
+      child:  Row(
         children: [
-          OverviewItem(
+          const OverviewItem(
             imagePath: AppImage.sun,
             title: 'Number \nof Cry Episode',
             duration: '45',
@@ -24,8 +25,8 @@ class OverviewWidget extends StatelessWidget {
             imgBgColor: Color(0xFFD4E0FD),
             fontColor: Color(0xFF14823D),
           ),
-          SizedBox(width: 16,),
-          OverviewItem(
+          SizedBox(width: 16.w,),
+          const OverviewItem(
             imagePath: AppImage.wifi,
             title: 'Longest \nCry Duration',
             duration: '30mins',
@@ -33,8 +34,8 @@ class OverviewWidget extends StatelessWidget {
             imgBgColor: Color(0xFFFDF4D4),
             fontColor: Color(0xFFD50F0F),
           ),
-          SizedBox(width: 16,),
-          OverviewItem(
+          SizedBox(width: 16.w,),
+          const OverviewItem(
             imagePath: AppImage.chart,
             title: 'Cumulative \nCry Duration',
             duration: '4hours',
@@ -71,9 +72,9 @@ class OverviewItem extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 0.96,
         child: Container(
-          padding: const EdgeInsets.fromLTRB(0, 19, 14, 15),
-          width: 116,
-          height: 120,
+          padding:  EdgeInsets.fromLTRB(0, 19.r, 14.r, 15.r),
+          width: 116.w,
+          height: 120.h,
           decoration: ShapeDecoration(
             color: const Color(0x5EF7F7F7),
             shape: RoundedRectangleBorder(
@@ -82,7 +83,7 @@ class OverviewItem extends StatelessWidget {
                 strokeAlign: BorderSide.strokeAlignOutside,
                 color: Color(0xFF122B83),
               ),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r),
             ),
           ),
           child: FittedBox(
@@ -90,45 +91,45 @@ class OverviewItem extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const SizedBox(width: 11,),
+                     SizedBox(width: 11.w,),
                     Container(
                       padding: const EdgeInsets.all(5),
-                      width: 24,
-                      height: 24,
+                      width: 24.w,
+                      height: 24.h,
                       decoration:  ShapeDecoration(
                         color: imgBgColor,
                         shape: const OvalBorder(),
                       ),
                       child: SvgPicture.asset(imagePath,),
                     ),
-                    const SizedBox(width: 7,),
+                     SizedBox(width: 7.w,),
                     Text(
                       title,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        fontSize: 8.11,
-                        height: 1.2,
+                        fontSize: 8.11.sp,
+                        height: 1.2.h,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 14,),
+                 SizedBox(height: 14.h,),
                 Text(
                   duration,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                const SizedBox(height: 6,),
+                 SizedBox(height: 6.h),
                 Padding(
-                  padding: const EdgeInsets.only(left: 14),
+                  padding:  EdgeInsets.only(left: 14.r),
                   child: Text(
                     summary,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: fontColor,
-                      fontSize: 6.5,
+                      fontSize: 6.5.sp,
                     ),
                   ),
                 ),

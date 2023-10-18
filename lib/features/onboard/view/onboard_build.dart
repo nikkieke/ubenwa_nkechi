@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnboardBuild extends StatelessWidget {
   const OnboardBuild({
@@ -23,12 +24,12 @@ class OnboardBuild extends StatelessWidget {
       return Stack(
         children: [
           Positioned(
-            top: 50,
-            left: width - 314,
-            right: width - 315,
+            top: 50.h,
+            left: width - 314.w,
+            right: width - 315.w,
             child: Container(
-              height: 200,
-              width: 200,
+              height: 200.h,
+              width: 200.w,
               decoration:  BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(onboardMomPath),
@@ -38,12 +39,12 @@ class OnboardBuild extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 100,
-            left: width - 393,
-            right: width - 92,
+            top: 100.h,
+            left: width - 393.w,
+            right: width - 92.w,
             child: Container(
-              height: 57,
-              width: 57,
+              height: 57.w,
+              width: 57.w,
               decoration:  BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(onboardAuxBaby1Path),
@@ -54,11 +55,11 @@ class OnboardBuild extends StatelessWidget {
           ),
           Positioned(
             bottom: 0,
-            left: width - 244,
-            right: width - 241,
+            left: width - 244.w,
+            right: width - 241.w,
             child: Container(
-              height: 57,
-              width: 57,
+              height: 57.h,
+              width: 57.w,
               decoration:  BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(onboardBabyPath),
@@ -69,11 +70,11 @@ class OnboardBuild extends StatelessWidget {
           ),
           Positioned(
             top: 0,
-            left: width - 244,
-            right: width - 241,
+            left: width - 244.w,
+            right: width - 241.w,
             child: Container(
-              height: 57,
-              width: 57,
+              height: 57.h,
+              width: 57.w,
               decoration:  BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(onboardAuxBaby2Path),
@@ -83,12 +84,12 @@ class OnboardBuild extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 100,
-            left: width - 88,
-            right: width - 394,
+            top: 100.h,
+            left: width - 88.w,
+            right: width - 394.w,
             child: Container(
-              height: 57,
-              width: 57,
+              height: 57.h,
+              width: 57.w,
               decoration:  BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(onboardAuxBaby3Path),

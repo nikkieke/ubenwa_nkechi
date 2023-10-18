@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ubenwa_nkechi/app/utils/utils.dart';
 import 'package:ubenwa_nkechi/features/records/view/view.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RecordsView extends StatefulWidget {
   const RecordsView({super.key});
@@ -30,8 +31,8 @@ class _RecordsViewState extends State<RecordsView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 15,
+             SizedBox(
+              height: 15.h,
             ),
             Stack(
               alignment: AlignmentDirectional.centerStart,
@@ -43,7 +44,7 @@ class _RecordsViewState extends State<RecordsView> {
                 ),
                 Align(
                   child: Text('Cry Records',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 18),),
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 18.sp),),
                 ),
                 Align(
                   alignment: Alignment.centerRight,
@@ -63,7 +64,7 @@ class _RecordsViewState extends State<RecordsView> {
               firstDate: DateTime(2023, 1, 15),
               lastDate: DateTime(2023, 6, 18).add(const Duration(days: 365 * 4)),
               onDateSelected: (date) => setState(() => _selectedDate = date),
-              leftMargin: 20,
+              leftMargin: 20.w,
               monthColor: const Color(0xFF9A9A9A),
               dayColor: Colors.black.withOpacity(0.41),
               dayNameColor: const Color(0xFF333A47),
@@ -73,27 +74,27 @@ class _RecordsViewState extends State<RecordsView> {
               locale: 'en',
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(25, 26, 0, 8),
+              padding:  EdgeInsets.fromLTRB(25.r, 26.r, 0, 8.r),
               child: Text('Today’s Overview',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: const Color(0xFF686868),
-                  fontSize: 13,
+                  fontSize: 13.sp,
                 ),),
             ),
             const OverviewWidget(),
-            const SizedBox(height: 26,),
+            SizedBox(height: 26.h,),
             Padding(
-              padding: const EdgeInsets.fromLTRB(25, 0, 0, 14),
+              padding:  EdgeInsets.fromLTRB(25.r, 0, 0, 14.r),
               child: Text('Hourly Breakdown',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: const Color(0xFF686868),
-                  fontSize: 13,
+                  fontSize: 13.sp,
                 ),),
             ),
             const Expanded(
               child: BarChartWidget(),
             ),
-            const SizedBox(height: 27,),
+             SizedBox(height: 27.h,),
             const Expanded(
                 child: TrackerWidget(),),
           ],

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 
 class EditAlarm extends StatefulWidget {
@@ -21,7 +23,7 @@ class _EditAlarmState extends State<EditAlarm> {
       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
         height: MediaQuery.of(context).size.height - 50,
-        padding: const EdgeInsets.only(left: 24, right: 24),
+        padding:  EdgeInsets.only(left: 24.r, right: 24.r),
         decoration: const ShapeDecoration(
           color: Color(0xff121212),
           shape: RoundedRectangleBorder(
@@ -31,7 +33,7 @@ class _EditAlarmState extends State<EditAlarm> {
             ),),),
         child: Column(
           children: [
-            const SizedBox(height: 10,),
+             SizedBox(height: 10.h,),
             Stack(
               alignment: AlignmentDirectional.centerStart,
               children: [
@@ -42,14 +44,14 @@ class _EditAlarmState extends State<EditAlarm> {
                       style: Theme.of(context).textTheme
                           .bodyMedium?.copyWith(
                           color: Theme.of(context).colorScheme.secondary,
-                          fontSize: 16,),
+                          fontSize: 16.sp,),
                     ),
                 ),
                 Align(
                   child: Text('Edit Alarm',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: const Color(0xffe8e1e1),
-                        fontSize: 18,),),
+                        fontSize: 18.sp,),),
                 ),
                 Align(
                   alignment: Alignment.centerRight,
@@ -60,7 +62,7 @@ class _EditAlarmState extends State<EditAlarm> {
                       style: Theme.of(context).textTheme
                           .bodyMedium?.copyWith(
                         color: Theme.of(context).colorScheme.secondary,
-                        fontSize: 16,),
+                        fontSize: 16.sp,),
                     ),
                   ),
                 ),
@@ -68,7 +70,7 @@ class _EditAlarmState extends State<EditAlarm> {
             ),
             SizedBox(
               width: double.infinity,
-              height: 160,
+              height: 180.h,
               child: CupertinoTheme(
                 data: const CupertinoThemeData(
                   brightness: Brightness.dark,
@@ -85,16 +87,16 @@ class _EditAlarmState extends State<EditAlarm> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
+             SizedBox(
+              height: 10.h,
             ),
             Container(
-              padding: const EdgeInsets.fromLTRB(25, 0, 15, 0),
-              height: 195,
+              padding:  EdgeInsets.fromLTRB(25.r, 0, 15.r, 0),
+              height: 222.h,
               width: double.maxFinite,
               decoration: BoxDecoration(
                 color: const Color(0xff212121),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(10.r),
               ),
               child: Column(
                 children: [
@@ -125,12 +127,12 @@ class _EditAlarmState extends State<EditAlarm> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 25,
+             SizedBox(
+              height: 35.h,
             ),
             Container(
               alignment: Alignment.center,
-              height: 40,
+              height: 50.h,
               width: double.maxFinite,
               decoration: BoxDecoration(
                 color: const Color(0xff212121),
@@ -164,7 +166,7 @@ class OptionsItem extends StatelessWidget {
         Text(title,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: const Color(0xffe8e1e1),
-            fontSize: 13,
+            fontSize: 13.sp,
           ),
         ),
         item??
@@ -178,7 +180,7 @@ class OptionsItem extends StatelessWidget {
               Text(subTitle,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: const Color(0xff6b6868),
-                  fontSize: 13,
+                  fontSize: 13.sp,
                 ),
               ),
               const SizedBox(width: 5,),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ubenwa_nkechi/app/app.dart';
 import 'package:ubenwa_nkechi/app/utils/utils.dart';
@@ -43,11 +44,17 @@ class _AppViewState extends ConsumerState<AppView> {
   @override
   Widget build(BuildContext context) {
     final appRouter = ref.watch(goRouterProvider);
-    return MaterialApp.router(
-      theme: AppTheme.light,
-      debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
-      routerConfig: appRouter,
-    );
+    return ScreenUtilInit(
+        designSize: const Size(428, 926),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MaterialApp.router(
+            theme: AppTheme.light,
+            debugShowCheckedModeBanner: false,
+            themeMode: ThemeMode.light,
+            routerConfig: appRouter,
+          );
+          },);
   }
 }

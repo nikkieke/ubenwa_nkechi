@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:ubenwa_nkechi/app/utils/helpers/app_bottomsheet/app_bottomsheet.dart';
@@ -13,16 +14,16 @@ class TrackerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(25,0,28,31),
+      padding:  EdgeInsets.fromLTRB(25.r,0,28.r,31.r),
       child: Row(
         children: [
           Expanded(
             child: FittedBox(
               fit: BoxFit.cover,
               child: Container(
-                width: 194,
-                //width: 171,
-                height: 194,
+                width: 194.w,
+                //width: 171.w,
+                height: 194.h,
                 decoration: ShapeDecoration(
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
@@ -36,26 +37,26 @@ class TrackerWidget extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    const SizedBox(height: 22,),
+                     SizedBox(height: 22.h,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          padding: const EdgeInsets.all(5),
-                          width: 24,
-                          height: 24,
+                          padding:  EdgeInsets.all(5.r),
+                          width: 24.r,
+                          height: 24.r,
                           decoration:  const ShapeDecoration(
                             color: Color(0xFFFAE6B4),
                             shape: OvalBorder(),
                           ),
                           child: SvgPicture.asset(AppImage.star,),
                         ),
-                        const SizedBox(width: 7,),
+                         SizedBox(width: 7.w,),
                         Text(
                           'Daily Challenge',
                           style: Theme.of(context).textTheme
                               .bodyMedium?.copyWith(
-                            fontSize: 11,
+                            fontSize: 11.sp,
                             fontWeight: FontWeight.w600,
                             height: 0,
                           ),
@@ -93,7 +94,7 @@ class TrackerWidget extends StatelessWidget {
                           ),
                           child: Column(
                             children: [
-                              const SizedBox(height: 18,),
+                               SizedBox(height: 18.h,),
                               Text(
                                 '8',
                                 style: Theme.of(context).textTheme
@@ -127,24 +128,24 @@ class TrackerWidget extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 15,),
+           SizedBox(width: 15.w,),
           Expanded(
             child: FittedBox(
               fit: BoxFit.cover,
               child: Container(
-                width: 194,
-                height: 194,
+                width: 194.w,
+                height: 194.h,
                 decoration: ShapeDecoration(
                   color: Theme.of(context).primaryColor,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10.r),
                   ),
                 ),
                 child: Column(
                   children: [
                     Container(
-                      width: 90.38,
-                      height: 86.49,
+                      width: 90.38.w,
+                      height: 86.49.h,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(AppImage.baby),
@@ -152,22 +153,22 @@ class TrackerWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 4.86,),
+                     //SizedBox(height: 2.h,),
                     Text(
                       'Next Predicted Cry',
                       style: Theme.of(context).textTheme.
                       bodyMedium?.copyWith(
                         color: const Color(0xFFF8F8F8),
-                        fontSize: 11.66,
+                        fontSize: 11.66.sp,
                       ),
                     ),
-                    const SizedBox(height: 2.49,),
+                     SizedBox(height: 2.49.h,),
                     Text(
                       '12:40 - 14:30',
                       style: Theme.of(context).textTheme
                           .bodyMedium?.copyWith(
                         color: const Color(0xFFFFBA18),
-                        fontSize: 21.38,
+                        fontSize: 21.38.sp,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -181,12 +182,12 @@ class TrackerWidget extends StatelessWidget {
                       },
                       child: Container(
                         alignment: Alignment.center,
-                        width: 99.13,
-                        height: 23.32,
+                        width: 99.13.w,
+                        height: 23.32.h,
                         decoration: ShapeDecoration(
                           color: Colors.white.withOpacity(0.71),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4.86),
+                            borderRadius: BorderRadius.circular(4.86.r),
                           ),
                           shadows: const [
                             BoxShadow(
@@ -201,7 +202,7 @@ class TrackerWidget extends StatelessWidget {
                           style: Theme.of(context).textTheme
                               .bodyMedium?.copyWith(
                             color: const Color(0xFF224FC4),
-                            fontSize: 9.72,
+                            fontSize: 9.72.sp,
                             fontWeight: FontWeight.w500,
                           ),
                         ),

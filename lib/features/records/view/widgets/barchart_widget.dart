@@ -2,6 +2,7 @@
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BarChartWidget extends StatefulWidget {
   const BarChartWidget({super.key});
@@ -30,7 +31,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
       children: [
         Container(
           width: customWidth,
-          height: 210,
+          height: 210.h,
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               end: Alignment(0.96, -0.29),
