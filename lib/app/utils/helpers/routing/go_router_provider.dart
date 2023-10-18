@@ -7,8 +7,8 @@ final GlobalKey<NavigatorState> _rootNavigation = GlobalKey(debugLabel: 'root');
 
 final goRouterProvider = Provider<GoRouter>((ref){
   return GoRouter(
-      //initialLocation: "/",
-      initialLocation: '/records',
+      initialLocation: '/',
+      //initialLocation: '/animatedLoader',
       navigatorKey: _rootNavigation,
       debugLogDiagnostics: true,
       restorationScopeId: 'app',
@@ -17,6 +17,11 @@ final goRouterProvider = Provider<GoRouter>((ref){
           path: '/',
           name: AppRoute.onboard.name,
           builder: (context, state) => const OnboardView(),
+        ),
+        GoRoute(
+          path: '/animatedLoader',
+          name: AppRoute.animatedLoader.name,
+          builder: (context, state) => const AnimatedLoaderView(),
         ),
         GoRoute(
           path: '/records',
@@ -30,4 +35,5 @@ final goRouterProvider = Provider<GoRouter>((ref){
 enum AppRoute {
   onboard,
   records,
+  animatedLoader,
 }

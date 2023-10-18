@@ -1,1 +1,1 @@
-export 'view/onboard.dart';
+export 'view/view.dart';
