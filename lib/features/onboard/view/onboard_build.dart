@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class OnboardBuild extends StatelessWidget {
-  const OnboardBuild({
+class OnboardModel{
+  const OnboardModel({
     required this.onboardMomPath,
     required this.onboardBabyPath,
     required this.onboardAuxBaby1Path,
     required this.onboardAuxBaby2Path,
-    required this.onboardAuxBaby3Path, super.key,
+    required this.onboardAuxBaby3Path,
   });
   final String onboardMomPath;
   final String onboardBabyPath;
@@ -16,8 +16,18 @@ class OnboardBuild extends StatelessWidget {
   final String onboardAuxBaby3Path;
 
 
+
+}
+class OnboardBuild extends StatelessWidget {
+  const OnboardBuild({
+    required this.model,
+     super.key,
+  });
+  final OnboardModel model;
+
   @override
   Widget build(BuildContext context) {
+
     return LayoutBuilder(builder: (BuildContext context,
         BoxConstraints constraints,) {
       final width = constraints.maxWidth;
@@ -32,7 +42,7 @@ class OnboardBuild extends StatelessWidget {
               width: 200.w,
               decoration:  BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(onboardMomPath),
+                    image: AssetImage(model.onboardMomPath),
 
                 ),
               ),
@@ -46,10 +56,10 @@ class OnboardBuild extends StatelessWidget {
               height: 57.w,
               width: 57.w,
               decoration:  BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(onboardAuxBaby1Path),
+                image: DecorationImage(
+                  image: AssetImage(model.onboardAuxBaby1Path),
 
-                  ),
+                ),
               ),
             ),
           ),
@@ -62,7 +72,7 @@ class OnboardBuild extends StatelessWidget {
               width: 57.w,
               decoration:  BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(onboardBabyPath),
+                  image: AssetImage(model.onboardBabyPath),
 
                 ),
               ),
@@ -77,7 +87,7 @@ class OnboardBuild extends StatelessWidget {
               width: 57.w,
               decoration:  BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(onboardAuxBaby2Path),
+                  image: AssetImage(model.onboardAuxBaby2Path),
 
                 ),
               ),
@@ -92,7 +102,7 @@ class OnboardBuild extends StatelessWidget {
               width: 57.w,
               decoration:  BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(onboardAuxBaby3Path),
+                  image: AssetImage(model.onboardAuxBaby3Path),
 
                 ),
               ),

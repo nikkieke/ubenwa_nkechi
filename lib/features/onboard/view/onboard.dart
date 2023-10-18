@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,105 +15,59 @@ class OnboardView extends StatefulWidget {
 }
 
 class _OnboardViewState extends State<OnboardView> {
-  int currentPage = 0;
-  int currentPage2 = 0;
-  late final PageController _pageController;
-  late final PageController _pageController2;
-  late final List<OnboardBuild> _items;
+  int currentIndex = 0;
+  bool fading = false;
 
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController();
-    _pageController2 = PageController();
-    _items = [
-      const OnboardBuild(
-        onboardMomPath: AppImage.mom1,
-        onboardBabyPath: AppImage.baby1,
-        onboardAuxBaby1Path: AppImage.auxBabyPacifier,
-        onboardAuxBaby2Path: AppImage.auxBabySmile,
-        onboardAuxBaby3Path: AppImage.auxBabyCry,
-      ),
-      const OnboardBuild(
-        onboardMomPath: AppImage.mom2,
-        onboardBabyPath: AppImage.baby2,
-        onboardAuxBaby1Path: AppImage.auxBabyCalm,
-        onboardAuxBaby2Path: AppImage.auxBabyPacifier,
-        onboardAuxBaby3Path: AppImage.auxBabySmile,
-      ),
-      const OnboardBuild(
-        onboardMomPath: AppImage.mom3,
-        onboardBabyPath: AppImage.baby3,
-        onboardAuxBaby1Path: AppImage.auxBabyCry,
-        onboardAuxBaby2Path: AppImage.auxBabyCalm,
-        onboardAuxBaby3Path: AppImage.auxBabyPacifier,
-      ),
-      const OnboardBuild(
-        onboardMomPath: AppImage.mom4,
-        onboardBabyPath: AppImage.baby4,
-        onboardAuxBaby1Path: AppImage.auxBabySmile,
-        onboardAuxBaby2Path: AppImage.auxBabyCry,
-        onboardAuxBaby3Path: AppImage.auxBabyCalm,
-      ),
-    ];
-    _pageController.addListener(() {
-      setState(() {
-        currentPage = _pageController.page!.round();
-      });
-      // if(_pageController.page!.round() != currentPage){
-      //   setState(() {
-      //     currentPage = _pageController.page!.round();
-      //     _pageController2.jumpToPage(currentPage);
-      //   });
-      // }
-    });
-    // _pageController2.addListener(() {
-    //   if(_pageController2.page!.round() != currentPage2){
-    //     setState(() {
-    //       currentPage2 = _pageController2.page!.round();
-    //       _pageController.jumpToPage(currentPage2);
-    //     });
-    //   }
-    // });
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
-
+    final onboardTextItem = textList[currentIndex];
+    final onboardItem = _items[currentIndex];
     return Scaffold(
       body: Column(
         children: [
             SizedBox(
             height: 152.h,
           ),
-          Container(
-            //color: Colors.teal,
-            height: 324.h,
-            width: double.maxFinite,
-            child: PageView.builder(
-              controller: _pageController,
-              itemCount: _items.length,
-              itemBuilder: (context, index) => _items[index],
+          SwipeDetector(
+            onSwipeRight: (){
+              setState(() {
+                if(currentIndex <= 0){
+                  currentIndex = 0;
+                }else{
+                  fading = true;
+                  currentIndex--;
+                }
+              });
+            },
+            onSwipeLeft: (){
+              setState(() {
+                if(currentIndex >= _items.length -1){
+                  currentIndex = _items.length -1;
+                }else{
+                  fading = true;
+                  currentIndex++;
+                }
+              });
+            },
+            child: SizedBox(
+              height: 324.h,
+              width: double.maxFinite,
+              child: OnboardBuild(model: onboardItem),
             ),
           ),
            SizedBox(
             height: 43.h,
           ),
-          SmoothPageIndicator(
-            controller: _pageController,
+          AnimatedSmoothIndicator(
+            activeIndex: currentIndex,
             count: _items.length,
             effect:  ExpandingDotsEffect(
               spacing: 2,
               dotColor: const Color(0xFFD3DEFC),
               dotHeight: 6,
               dotWidth: 6,
-              activeDotColor: currentPage.isEven?
+              activeDotColor: currentIndex.isEven?
               Theme.of(context).colorScheme.secondary:
               Theme.of(context).colorScheme.primary,
             ),
@@ -120,24 +75,43 @@ class _OnboardViewState extends State<OnboardView> {
            SizedBox(
             height: 41.h,
           ),
-          Container(
-            //color: Colors.cyan,
-            height: 347.h,
-            width: double.maxFinite,
-            child:  PageView.builder(
-              controller: _pageController2,
-              onPageChanged: (index){
+
+          SwipeDetector(
+            onSwipeRight: (){
+              setState(() {
+                if(currentIndex <= 0){
+                  currentIndex = 0;
+                }else{
+                  fading = true;
+                  currentIndex--;
+                }
+              });
+            },
+            onSwipeLeft: (){
+              setState(() {
+                if(currentIndex >= _items.length -1){
+                  currentIndex = _items.length -1;
+                }else{
+                  fading = true;
+                  currentIndex++;
+                }
+              });
+            },
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 200),
+              opacity: fading? 0.5: 1.0,
+              curve: Curves.ease,
+              onEnd: (){
                 setState(() {
-                  index = currentPage;
+                  fading = false;
                 });
               },
-              itemCount: textList.length,
-              itemBuilder: (context, index){
-                final onboardTextItem = textList[index];
-                return OnboardTextBuild(model: onboardTextItem);
-              },
+              child: SizedBox(
+                  height: 347.h,
+                  width: double.maxFinite,
+                  child: OnboardTextBuild(model: onboardTextItem),
+              ),
             ),
-
           ),
 
         ],
@@ -145,6 +119,38 @@ class _OnboardViewState extends State<OnboardView> {
     );
   }
 }
+
+final List<OnboardModel>_items = [
+   const OnboardModel(
+    onboardMomPath: AppImage.mom1,
+    onboardBabyPath: AppImage.baby1,
+    onboardAuxBaby1Path: AppImage.auxBabyPacifier,
+    onboardAuxBaby2Path: AppImage.auxBabySmile,
+    onboardAuxBaby3Path: AppImage.auxBabyCry,
+  ),
+  const OnboardModel(
+    onboardMomPath: AppImage.mom2,
+    onboardBabyPath: AppImage.baby2,
+    onboardAuxBaby1Path: AppImage.auxBabyCalm,
+    onboardAuxBaby2Path: AppImage.auxBabyPacifier,
+    onboardAuxBaby3Path: AppImage.auxBabySmile,
+  ),
+  const OnboardModel(
+    onboardMomPath: AppImage.mom3,
+    onboardBabyPath: AppImage.baby3,
+    onboardAuxBaby1Path: AppImage.auxBabyCry,
+    onboardAuxBaby2Path: AppImage.auxBabyCalm,
+    onboardAuxBaby3Path: AppImage.auxBabyPacifier,
+  ),
+  const OnboardModel(
+    onboardMomPath: AppImage.mom4,
+    onboardBabyPath: AppImage.baby4,
+    onboardAuxBaby1Path: AppImage.auxBabySmile,
+    onboardAuxBaby2Path: AppImage.auxBabyCry,
+    onboardAuxBaby3Path: AppImage.auxBabyCalm,
+  ),
+];
+
 
 class OnboardTextModel{
   OnboardTextModel({
