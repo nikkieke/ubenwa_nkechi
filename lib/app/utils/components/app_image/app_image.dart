@@ -19,4 +19,6 @@ class AppImage{
   static const auxBabyCry = 'assets/images/aux_baby_cry.png';
   static const auxBabyPacifier = 'assets/images/aux_baby_pacifier.png';
   static const auxBabySmile = 'assets/images/aux_baby_smile.png';
+  static const milkDrop = 'assets/images/milk_drop.png';
+  static const milkSeaCover = 'assets/images/milk_sea_cover.png';
 }

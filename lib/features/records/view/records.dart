@@ -38,9 +38,9 @@ class _RecordsViewState extends State<RecordsView> {
               alignment: AlignmentDirectional.centerStart,
               children: [
                 IconButton(onPressed: () {  },
-                  icon: const Icon(Icons.arrow_back_ios_new,
-                    color: Color(0xff292D32),
-                    size: 24,),
+                  icon:  Icon(Icons.arrow_back_ios_new,
+                    color: const Color(0xff292D32),
+                    size: 24.w,),
                 ),
                 Align(
                   child: Text('Cry Records',

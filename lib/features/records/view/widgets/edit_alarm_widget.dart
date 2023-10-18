@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 
 
@@ -25,7 +26,7 @@ class _EditAlarmState extends State<EditAlarm> {
         height: MediaQuery.of(context).size.height - 50,
         padding:  EdgeInsets.only(left: 24.r, right: 24.r),
         decoration: const ShapeDecoration(
-          color: Color(0xff121212),
+          color: Color(0xff1c1c1d),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(9),
@@ -38,7 +39,9 @@ class _EditAlarmState extends State<EditAlarm> {
               alignment: AlignmentDirectional.centerStart,
               children: [
                 TextButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      context.pop();
+                    },
                     child: Text(
                       'Cancel',
                       style: Theme.of(context).textTheme
@@ -50,7 +53,7 @@ class _EditAlarmState extends State<EditAlarm> {
                 Align(
                   child: Text('Edit Alarm',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: const Color(0xffe8e1e1),
+                      color: const Color(0xffcccccc),
                         fontSize: 18.sp,),),
                 ),
                 Align(
@@ -93,9 +96,9 @@ class _EditAlarmState extends State<EditAlarm> {
             Container(
               padding:  EdgeInsets.fromLTRB(25.r, 0, 15.r, 0),
               height: 222.h,
-              width: double.maxFinite,
+              width: 385.w,
               decoration: BoxDecoration(
-                color: const Color(0xff212121),
+                color: const Color(0xff2c2c2d),
                 borderRadius: BorderRadius.circular(10.r),
               ),
               child: Column(
@@ -119,11 +122,13 @@ class _EditAlarmState extends State<EditAlarm> {
                     color: Color(0xff6b6868),
                   ),
                   OptionsItem(title: 'Snooze', subTitle: '',
-                    item: Switch(
-                      activeColor: Colors.white,
-                      activeTrackColor: Colors.green,
-                      value: snoozeOn,
-                      onChanged: (bool value) {  },),),
+                    item: SizedBox(
+                      child: Switch(
+                        activeColor: Colors.white,
+                        activeTrackColor: Colors.green,
+                        value: snoozeOn,
+                        onChanged: (bool value) {  },),
+                    ),),
                 ],
               ),
             ),
@@ -135,12 +140,12 @@ class _EditAlarmState extends State<EditAlarm> {
               height: 50.h,
               width: double.maxFinite,
               decoration: BoxDecoration(
-                color: const Color(0xff212121),
+                color: const Color(0xff2c2c2d),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text('Delete Alarm', style: Theme.of(context).textTheme
                   .bodyMedium?.copyWith(
-                color: const Color(0xffd46e6e),
+                color: const Color(0xff8b4038),
               ),),
             ),
           ],
@@ -165,7 +170,7 @@ class OptionsItem extends StatelessWidget {
       children: [
         Text(title,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: const Color(0xffe8e1e1),
+            color: const Color(0xffa6a6a7),
             fontSize: 13.sp,
           ),
         ),
@@ -179,13 +184,13 @@ class OptionsItem extends StatelessWidget {
             children: [
               Text(subTitle,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: const Color(0xff6b6868),
+                  color: const Color(0xff656569),
                   fontSize: 13.sp,
                 ),
               ),
               const SizedBox(width: 5,),
               const Icon(Icons.arrow_forward_ios,
-                color: Color(0xff6b6868),
+                color: Color(0xff49494c),
                 size: 18,),
             ],
           ),
