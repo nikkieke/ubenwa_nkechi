@@ -12,7 +12,7 @@ class SwipeDetector extends StatelessWidget {
   final VoidCallback? onSwipeLeft;
   final VoidCallback? onSwipeRight;
 
-  SwipeDetector({
+  const SwipeDetector({
     required this.child,
     this.onSwipeUp,
     this.onSwipeDown,
@@ -62,31 +62,33 @@ class SwipeDetector extends StatelessWidget {
 
         if (mainDis < minMainDisplacement) {
           debugPrint(
-              "SWIPE DEBUG | Displacement too short. Real: $mainDis - Min: $minMainDisplacement");
+              'SWIPE DEBUG | Displacement too short. Real: $mainDis - Min: $minMainDisplacement');
           return;
         }
         if (crossDis > maxCrossRatio * mainDis) {
           debugPrint(
-              "SWIPE DEBUG | Cross axis displacemnt bigger than limit. Real: $crossDis - Limit: ${mainDis * maxCrossRatio}");
+              'SWIPE DEBUG | Cross axis displacemnt bigger than limit. Real: $crossDis - Limit: ${mainDis * maxCrossRatio}');
           return;
         }
         if (mainVel < minVelocity) {
           debugPrint(
-              "SWIPE DEBUG | Swipe velocity too slow. Real: $mainVel - Min: $minVelocity");
+              'SWIPE DEBUG | Swipe velocity too slow. Real: $mainVel - Min: $minVelocity');
           return;
         }
 
         // dy < 0 => UP -- dx > 0 => RIGHT
         if (isHorizontalMainAxis) {
-          if (dx > 0)
+          if (dx > 0) {
             onSwipeRight?.call();
-          else
+          } else {
             onSwipeLeft?.call();
+          }
         } else {
-          if (dy < 0)
+          if (dy < 0) {
             onSwipeUp?.call();
-          else
+          } else {
             onSwipeDown?.call();
+          }
         }
       },
     );

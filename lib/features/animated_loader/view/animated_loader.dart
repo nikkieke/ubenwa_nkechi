@@ -69,8 +69,6 @@ class _AnimatedLoaderViewState extends State<AnimatedLoaderView> with TickerProv
       body: LayoutBuilder(builder: (BuildContext context,
           BoxConstraints constraints,) {
         final height = constraints.maxHeight;
-        final width = constraints.maxWidth;
-
         return Stack(
           children: [
             Positioned(

@@ -72,7 +72,6 @@ class _OnboardViewState extends State<OnboardView> {
            SizedBox(
             height: 41.h,
           ),
-
           SwipeDetector(
             onSwipeRight: (){
               setState(() {
