@@ -18,15 +18,112 @@ class OnboardModel{
 
 
 }
-class OnboardBuild extends StatelessWidget {
+class OnboardBuild extends StatefulWidget {
   const OnboardBuild({
     required this.model,
-     super.key,
+    required this.page,
+     required this.fading, super.key,
   });
   final OnboardModel model;
+  final int page;
+   final bool fading;
 
   @override
+  State<OnboardBuild> createState() => _OnboardBuildState();
+}
+
+class _OnboardBuildState extends State<OnboardBuild> with TickerProviderStateMixin{
+  late AnimationController animationController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+  }
+
+  @override
+  void didUpdateWidget(covariant OnboardBuild oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    animationController.reset();
+
+    if (oldWidget.page != widget.page) {
+      animationController.forward();
+    }
+  }
+  @override
   Widget build(BuildContext context) {
+    final faces = <Widget>[
+      Container(
+        height: 57.w,
+        width: 57.w,
+        decoration:  BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(widget.model.onboardBabyPath),
+
+          ),
+        ),
+      ),
+      Container(
+              height: 57.w,
+              width: 57.w,
+              decoration:  BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(widget.model.onboardAuxBaby1Path),
+
+                ),
+              ),
+            ),
+      Container(
+        height: 57.w,
+        width: 57.w,
+        decoration:  BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(widget.model.onboardAuxBaby2Path),
+
+          ),
+        ),
+      ),
+      Container(
+        height: 57.w,
+        width: 57.w,
+        decoration:  BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(widget.model.onboardAuxBaby3Path),
+
+          ),
+        ),
+      ),
+    ];
+    final tweens = <int, List<Tween<Alignment>>>{
+      0: [
+        Tween(begin: const Alignment(0, -1), end: const Alignment(1, 0)),
+        Tween(begin: const Alignment(0.8, 0), end: const Alignment(0, 1)),
+        Tween(begin: const Alignment(0, 1), end: const Alignment(-1, 0)),
+        Tween(begin: const Alignment(-0.8, 0), end: const Alignment(0, -1)),
+      ],
+      1: [
+        Tween(begin: const Alignment(0.8, 0), end: const Alignment(0, 1)),
+        Tween(begin: const Alignment(0, 1), end: const Alignment(-1, 0)),
+        Tween(begin: const Alignment(-0.8, 0), end: const Alignment(0, -1)),
+        Tween(begin: const Alignment(0, -1), end: const Alignment(1, 0)),
+      ],
+      2: [
+        Tween(begin:  const Alignment(0, 1), end: const Alignment(-1, 0)),
+        Tween(begin: const Alignment(-0.8, 0), end: const Alignment(0, -1)),
+        Tween(begin: const Alignment(0, -1), end: const Alignment(1, 0)),
+        Tween(begin: const Alignment(0.8, 0), end: const Alignment(0, 1)),
+      ],
+      3: [
+        Tween(begin: const Alignment(-0.8, 0), end: const Alignment(0, -1)),
+        Tween(begin: const Alignment(0, -1), end: const Alignment(1, 0)),
+        Tween(begin: const Alignment(0.8, 0), end: const Alignment(0, 1)),
+        Tween(begin: const Alignment(0, 1), end: const Alignment(-1, 0)),
+      ],
+    };
 
     return LayoutBuilder(builder: (BuildContext context,
         BoxConstraints constraints,) {
@@ -37,79 +134,39 @@ class OnboardBuild extends StatelessWidget {
             top: 50.h,
             left: width - 314.w,
             right: width - 315.w,
-            child: Container(
-              height: 200.h,
-              width: 200.w,
-              decoration:  BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(model.onboardMomPath),
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 200),
+              opacity: widget.fading? 0.5: 1.0,
+              curve: Curves.ease,
+              child: Container(
+                height: 200.h,
+                width: 200.w,
+                decoration:  BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(widget.model.onboardMomPath),
 
+                  ),
                 ),
               ),
             ),
           ),
-          Positioned(
-            top: 100.h,
-            left: width - 393.w,
-            right: width - 92.w,
-            child: Container(
-              height: 57.w,
-              width: 57.w,
-              decoration:  BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(model.onboardAuxBaby1Path),
-
-                ),
-              ),
-            ),
+          AnimatedBuilder(
+              animation: animationController,
+              builder: (context,_){
+                return Stack(
+                  children: [
+                    ...List.generate(faces.length, (index) {
+                    return Align(
+                      alignment: tweens[widget.page]![index].animate(animationController).value,
+                      child: faces[index],
+                    );
+                }),
+                  ],
+                );
+              },
           ),
-          Positioned(
-            bottom: 0,
-            left: width - 244.w,
-            right: width - 241.w,
-            child: Container(
-              height: 57.h,
-              width: 57.w,
-              decoration:  BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(model.onboardBabyPath),
 
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 0,
-            left: width - 244.w,
-            right: width - 241.w,
-            child: Container(
-              height: 57.h,
-              width: 57.w,
-              decoration:  BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(model.onboardAuxBaby2Path),
-
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 100.h,
-            left: width - 88.w,
-            right: width - 394.w,
-            child: Container(
-              height: 57.h,
-              width: 57.w,
-              decoration:  BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(model.onboardAuxBaby3Path),
-
-                ),
-              ),
-            ),
-          ),
         ],
-
       );
     },);
   }

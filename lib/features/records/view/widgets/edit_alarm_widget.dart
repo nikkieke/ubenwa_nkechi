@@ -59,7 +59,9 @@ class _EditAlarmState extends State<EditAlarm> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      context.pop();
+                    },
                     child: Text(
                       'Save',
                       style: Theme.of(context).textTheme
@@ -95,7 +97,7 @@ class _EditAlarmState extends State<EditAlarm> {
             ),
             Container(
               padding:  EdgeInsets.fromLTRB(25.r, 0, 15.r, 0),
-              height: 222.h,
+              height: 240.h,
               width: 385.w,
               decoration: BoxDecoration(
                 color: const Color(0xff2c2c2d),

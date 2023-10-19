@@ -1,8 +1,5 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:ubenwa_nkechi/app/utils/utils.dart';
 import 'package:ubenwa_nkechi/features/onboard/view/view.dart';
@@ -53,7 +50,7 @@ class _OnboardViewState extends State<OnboardView> {
             child: SizedBox(
               height: 324.h,
               width: double.maxFinite,
-              child: OnboardBuild(model: onboardItem),
+              child: OnboardBuild(model: onboardItem, page: currentIndex, fading: fading,),
             ),
           ),
            SizedBox(
@@ -109,7 +106,19 @@ class _OnboardViewState extends State<OnboardView> {
               child: SizedBox(
                   height: 347.h,
                   width: double.maxFinite,
-                  child: OnboardTextBuild(model: onboardTextItem),
+                  child: OnboardTextBuild(
+                    model: onboardTextItem,
+                    pressed1: (){
+                      setState(() {
+                        currentIndex --;
+                      });
+                    },
+                    pressed2: (){
+                      setState(() {
+                        currentIndex++;
+                      });
+                    },
+                  ),
               ),
             ),
           ),
@@ -121,7 +130,7 @@ class _OnboardViewState extends State<OnboardView> {
 }
 
 final List<OnboardModel>_items = [
-   const OnboardModel(
+  const OnboardModel(
     onboardMomPath: AppImage.mom1,
     onboardBabyPath: AppImage.baby1,
     onboardAuxBaby1Path: AppImage.auxBabyPacifier,
@@ -152,19 +161,6 @@ final List<OnboardModel>_items = [
 ];
 
 
-class OnboardTextModel{
-  OnboardTextModel({
-    required this.title,
-    required this.subTitle,
-    this.buttonTitle1,
-    this.buttonTitle2,
-  });
-  final String title;
-  final String subTitle;
-  final String? buttonTitle1;
-  final String? buttonTitle2;
-}
-
 final List<OnboardTextModel>textList =[
    OnboardTextModel(title: 'Welcome to a New\n Mothering Experince',
      subTitle: 'Now you can understand a lot about your new born, '
@@ -186,119 +182,3 @@ final List<OnboardTextModel>textList =[
      buttonTitle1: 'Previous',
    ),
 ];
-
-class OnboardTextBuild extends StatelessWidget {
-  const OnboardTextBuild({
-    required this.model, super.key,
-  });
-
-  final OnboardTextModel model;
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          children: [
-            Text(
-              model.title,
-              textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme.bodyMedium?.copyWith(
-                fontSize: 22.sp,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-             SizedBox(height: 13.h,),
-            SizedBox(
-              width: 302.w,
-              height: 62.h,
-              child: Text(
-                model.subTitle,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontSize: 14.sp,
-                ),
-              ),
-            ),
-          ],
-        ),
-
-        if(model.title == 'Happy Mom\n Happy Home')...[
-          CupertinoButton(
-              child: Container(
-                alignment: Alignment.center,
-                width: 380.w,
-                height: 58.h,
-                decoration: ShapeDecoration(
-                  color: Theme.of(context).colorScheme.primary,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: Text(
-                  'Get Started',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme
-                      .bodyMedium?.copyWith(
-                    color: Colors.white,
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              onPressed: (){
-                context.goNamed(AppRoute.animatedLoader.name);
-              },),
-
-        ]else...[
-          Container(),
-        ],
-
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            if(model.buttonTitle1 == null)...[
-              Container(),
-            ]else...[
-              TextButton(
-                onPressed: (){},
-                child: Text(
-                  '${model.buttonTitle1}',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme
-                      .bodyMedium?.copyWith(
-                    color: const Color(0xFF848484),
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ],
-
-            if(model.buttonTitle2 == null)...[
-              Container(),
-            ]else...[
-              TextButton(
-                onPressed: (){},
-                child: Text(
-                  '${model.buttonTitle2}',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme
-                      .bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ],
-          ],
-        ),
-
-      ],
-    );
-  }
-}

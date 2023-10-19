@@ -22,7 +22,7 @@ class _AnimatedLoaderViewState extends State<AnimatedLoaderView> with TickerProv
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 7),
+      duration: const Duration(seconds: 4),
     );
     _animation = Tween<double>(
       begin: 0,
@@ -93,7 +93,7 @@ class _AnimatedLoaderViewState extends State<AnimatedLoaderView> with TickerProv
             ),
             Positioned(
               top: height/2,
-              left: width/5,
+              left: 107.w,
               child: Text(
                 'Please wait while we\ngather your Baby’s data...',
                 textAlign: TextAlign.center,
